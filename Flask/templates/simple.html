@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+</head>
+<body>
+  <div class="container mb-3 mt-3">
+    <table class="table table-striped table-bordered" style="width: 100%" id="mydatatable">
+        
+      <thead>
+        <tr>
+        {% for header in headers %}
+          <th>{{header}}</th>
+        {% endfor %}
+        </tr>
+      </thead>
+  
+      <tbody>
+      {% for object in objects %} 
+        <tr>
+      {% for k, val in object.items() %}
+          <td>{{val}}</td>
+        {% endfor %}
+        </tr>
+      {% endfor %}        
+      </tbody>
+
+    </table>
+  </div>
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1./js/bootstrap.min.js"></script>
+    
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>$('#mydatatable').DataTable();</script>
+</body>
+</html>

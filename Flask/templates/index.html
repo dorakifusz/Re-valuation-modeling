@@ -3,88 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>RE Student Rent Evaluation</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-<body>
-    <!-- Navbar - Bootstrap -->    
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <a class="navbar-brand" href="index.html">StudentHousing</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-            <a class="nav-link " href="searchPage.html">Find appartment <span class="sr-only">(current)</span></a>
-            <a class="nav-link" href="#">Agreements</a>
-            <a class="nav-link" href="#">Sign Up</a>
-            <a class="nav-link" href="#">Login</a>
-            <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
-        </div>
-        </div>
-        </nav>
-
-
-<!-- Header and search bar -->
-
-<div class="jumbotron jumbotron-fluid">
-    <div class="container ">
-        <h1 class="display-3">Search across 'X' available apartments in Copenhagen</h1>
-        
-    </div>
-
-
-
-    
-    <!-- Search field
-    <div class="form-container " style="max-width: width 1920px;">
-<form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
-    <input type="text" placeholder="Area..." name="search2">
-    <button type="submit"><i class="fa fa-search"></i></button>
-</form>
-    </div> -->
-
-    <!-- Example split danger button -->
-    <div class="mx-auto"style="width: 200px;">
-        <div class="btn-group ">
-            <button type="button" class="btn btn-lg btn-secondary">Choose Area</button>
-            <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="searchPage.html">Nørrebro</a>
-                <a class="dropdown-item" href="searchPage.html">Copenhagen H</a>
-                <a class="dropdown-item" href="searchPage.html">Østerbro</a>
-                <a class="dropdown-item" href="searchPage.html">Vesterbro</a>
-                <a class="dropdown-item" href="searchPage.html">West Amager</a>
-                <a class="dropdown-item" href="searchPage.html">East Amager</a>
-                <a class="dropdown-item" href="searchPage.html">Frederiksberg</a>
-                <a class="dropdown-item" href="searchPage.html">Vanløse</a>
-                <a class="dropdown-item" href="searchPage.html">Valby</a>
-                <a class="dropdown-item" href="searchPage.html">Bispebjerg</a>
-                <a class="dropdown-item" href="searchPage.html">Brønshøj</a>
-                
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
+        <title>RE Student Rent Evaluation</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+            integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/demo.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
+        <link href="{{ url_for('static',filename='css/table.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="index.html">REV Modelling</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link " href="searchPage.html">Find appartment <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Agreements</a>
+                <a class="nav-link" href="#">Sign Up</a>
+                <a class="nav-link" href="#">Login</a>
+                <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
             </div>
         </div>
+    </nav>
+    
+    <!-- Form -->
+    <div class="jumbotron jumbotron-fluid">
+
+
+    <!-- Starting the card -->
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header">
+                        Nr.1 Tool for Finding an Apartment for Students in Copenhagen
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Special title treatment</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      
+        
+                    <!-- Housing Types --> 
+                    <div class="container">
+                        <div class="row">
+                          <div class="col-2.4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="inputGroupSelect01">Housing Type:</label>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                  <input type="checkbox">
+                                </div>
+                              </div>
+                              <label class="form-control">Apartment</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                  <input type="checkbox">
+                                </div>
+                              </div>
+                              <label class="form-control">Room</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                  <input type="checkbox">
+                                </div>
+                              </div>
+                              <label class="form-control">Villa</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+          
+                    <!-- University Selection --> 
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">University Selection:</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                          <option selected>Choose...</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </div>
+
+
+                    <!-- Ranges --> 
+                      <div class="row">
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">Price Range:</span>
+                                </div>
+                                <input type="text" aria-label="First name" class="form-control" placeholder="Min Price">
+                                <input type="text" aria-label="Last name" class="form-control" placeholder="Max Price">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">Number of Rooms:</span>
+                                </div>
+                                <input type="text" aria-label="First name" class="form-control" placeholder="Min ">
+                                <input type="text" aria-label="Last name" class="form-control" placeholder="Max ">
+                            </div>
+                        </div>
+                      </div>
+                      <br>
+
+
+
+                    <!-- Advanced Search 2nd --> 
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01">Pets Allowed</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                      <option selected></option>
+                                      <option value="1">Yes</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                  </div>
+                              </div>
+                          <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="inputGroupSelect01">Furnished</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                  <option selected></option>
+                                  <option value="1">Yes</option>
+                                  <option value="2">No</option>
+                                </select>
+                              </div>
+                          </div>
+                          <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="inputGroupSelect01">Rent Period</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                  <option selected></option>
+                                  <option value="1">>1</option>
+                                  <option value="2">1-2</option>
+                                  <option value="3">2+</option>
+                                </select>
+                            </div>
+                          </div>
+                        </div>
+                      
+
+
+                        <!-- Model Weights --> 
+                        <p class="card-text">Here is some text where we explain why we are asking to choose to select weights</p>
+                        <div class="row">
+                            <div class="col-sm-4">
+                              <div class="card">
+                                <div class="card-body">
+                                    <div id="slider">
+                                        <h5 class="card-title">Price</h5>
+                                        <input class="bar" type="range" id="rangeinput" value="50" onchange="rangevalue.value=value"/>
+                                            <span class="highlight"></span>
+                                        <br>Weight: 
+                                        <output id="rangevalue">50</output>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card">
+                                  <div class="card-body">
+                                      <div id="slider">
+                                          <h5 class="card-title">Location</h5>
+                                          <input class="bar" type="range" id="rangeinput1" value="50" onchange="rangevalue1.value=value"/>
+                                              <span class="highlight"></span>
+                                          <br>Weight: 
+                                          <output id="rangevalue1">50</output>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-4">
+                                <div class="card">
+                                  <div class="card-body">
+                                      <div id="slider">
+                                          <h5 class="card-title">Some other value</h5>
+                                          <input class="bar" type="range" id="rangeinput1" value="50" onchange="rangevalue2.value=value"/>
+                                              <span class="highlight"></span>
+                                          <br>Weight: 
+                                          <output id="rangevalue2">50</output>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        <br>
+
+                        <input href="#" type="submit" value="Search" id="calc_btn" class="btn btn-primary" />
+                        <br />
+        
+                        
+                      </form>
+        
+                    </div>
+                  </div>
+            </div>
+            <div class="col"></div>
+        </div>
+     
+                
+                        <!-- Advanced Search --> 
+                        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Advanced Options
+                          </button>
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                          <div class="card card-body">
+                              <div class="row">
+                                  <div class="col">
+                                      <div class="input-group mb-3">
+                                          <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Pets Allowed</label>
+                                          </div>
+                                          <select class="custom-select" id="inputGroupSelect01">
+                                            <option selected></option>
+                                            <option value="1">Yes</option>
+                                            <option value="2">No</option>
+                                          </select>
+                                        </div>
+                                    </div>
+                                <div class="col">
+                                  <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Furnished</label>
+                                      </div>
+                                      <select class="custom-select" id="inputGroupSelect01">
+                                        <option selected></option>
+                                        <option value="1">Yes</option>
+                                        <option value="2">No</option>
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                  <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Rent Period</label>
+                                      </div>
+                                      <select class="custom-select" id="inputGroupSelect01">
+                                        <option selected></option>
+                                        <option value="1">>1</option>
+                                        <option value="2">1-2</option>
+                                        <option value="3">2+</option>
+                                      </select>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                        <br>
+  
     </div>
 
-</div>
-    
-
-    
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
-<script src="boligProject.js"></script>
-</body>
+
+  </body>
 </html>

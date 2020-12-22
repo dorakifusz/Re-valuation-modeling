@@ -1,0 +1,8 @@
+.dataframe {
+    margin: 20px 40px;
+    border-radius: 20px;
+}
+
+.dataframe > thead > tr > th, .dataframe > tbody > tr > td {
+    border: none;
+}
