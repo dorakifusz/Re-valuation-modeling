@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ url_for('static',filename='css/demo.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
-        <link href="{{ url_for('static',filename='css/table.css') }}" rel="stylesheet" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -35,202 +34,222 @@
 
     <!-- Starting the card -->
     <div class="container">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-header">
-                        Nr.1 Tool for Finding an Apartment for Students in Copenhagen
-                    </div>
-                    <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      
-        
-                    <!-- Housing Types --> 
-                    <div class="container">
+        <form action="{{url_for('result')}}" method="POST">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-header">
+                            Nr.1 Tool for Finding an Apartment for Students in Copenhagen
+                        </div>
+                        <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        
+            
+                        <!-- Housing Types --> 
+                        <div class="container">
+                            <div class="row">
+                            <div class="col-2.4">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Housing Type:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                    <input type="checkbox" name="apartment">
+                                    </div>
+                                </div>
+                                <label class="form-control">Apartment</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                    <input type="checkbox" name="room">
+                                    </div>
+                                </div>
+                                <label class="form-control">Room</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                    <input type="checkbox" name="villa">
+                                    </div>
+                                </div>
+                                <label class="form-control">Villa</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+            
+                        <!-- University Selection --> 
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">University Selection:</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01" name="university_selection">
+                            <option selected>Choose...</option>
+                            <option value="CBS Solbjerg Plads" name="CBS Solbjerg Plads">CBS Solbjerg Plads</option>
+                            <option value="CBS Dalgas Have" name="CBS Dalgas Have">CBS Dalgas Have</option>
+                            <option value="CBS Graduate House" name="CBS Graduate House">CBS Graduate House</option>
+                            <option value="CBS Flintholm" name="CBS Flintholm">CBS Flintholm</option>
+                            <option value="CBS Porcelænshaven" name="CBS Porcelænshaven">CBS Porcelænshaven</option>
+                            <option value="CBS Kilen" name="CBS Kilen">CBS Kilen</option>
+                            <option value="Aalborg Universitet" name="Aalborg Universitet">Aalborg Universitet</option>
+                            <option value="KU Nørregade" name="KU Nørregade">KU Nørregade</option>
+                            <option value="KU Søndre Campus" name="KU Søndre Campus">KU Søndre Campus</option>
+                            <option value="KU Panum" name="KU Panum">KU Panum</option>
+                            <option value="KU Samfundsvidenskabelige Fakultet" name="KU Samfundsvidenskabelige Fakultet">KU Samfundsvidenskabelige Fakultet</option>
+                            <option value="KU Sundhedsvidenskabelige Falkutet" name="KU Sundhedsvidenskabelige Falkutet">KU Sundhedsvidenskabelige Falkutet</option>
+                            <option value="KU Det Natur- og Biovidenskabelige Fakultet" name="KU Det Natur- og Biovidenskabelige Fakultet">KU Det Natur- og Biovidenskabelige Fakultet</option>
+                            <option value="KU Det Juridiske Fakultet" name="KU Det Juridiske Fakultet">KU Det Juridiske Fakultet</option>
+                            <option value="KU Det Humanistiske Fakultet" name="KU Det Humanistiske Fakultet">KU Det Humanistiske Fakultet</option>
+                            <option value="Det Teologiske Fakultet" name="Det Teologiske Fakultet">Det Teologiske Fakultet</option>
+                            <option value="Copenhagen Business Academy" name="Copenhagen Business Academy">Copenhagen Business Academy</option>
+                            <option value="IT Universitetet" name="IT Universitetet">IT Universitetet</option>
+                            </select>
+                        </div>
+
+
+                        <!-- Ranges --> 
                         <div class="row">
-                          <div class="col-2.4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <label class="input-group-text" for="inputGroupSelect01">Housing Type:</label>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text">Price Range:</span>
+                                    </div>
+                                    <input type="text" name="min_price" aria-label="Min Price" class="form-control" placeholder="Min Price">
+                                    <input type="text" name="max_price" aria-label="Max Price" class="form-control" placeholder="Max Price">
                                 </div>
                             </div>
-                          </div>
-                          <div class="col">
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                  <input type="checkbox">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text">Number of Rooms:</span>
+                                    </div>
+                                    <input type="text" name="min_room" aria-label="min_room" class="form-control" placeholder="Min ">
+                                    <input type="text" name="max_room" aria-label="max_room" class="form-control" placeholder="Max ">
                                 </div>
-                              </div>
-                              <label class="form-control">Apartment</label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                  <input type="checkbox">
-                                </div>
-                              </div>
-                              <label class="form-control">Room</label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                  <input type="checkbox">
-                                </div>
-                              </div>
-                              <label class="form-control">Villa</label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-          
-                    <!-- University Selection --> 
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">University Selection:</label>
-                        </div>
-                        <select class="custom-select" id="inputGroupSelect01">
-                          <option selected>Choose...</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </div>
-
-
-                    <!-- Ranges --> 
-                      <div class="row">
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">Price Range:</span>
-                                </div>
-                                <input type="text" aria-label="First name" class="form-control" placeholder="Min Price">
-                                <input type="text" aria-label="Last name" class="form-control" placeholder="Max Price">
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">Number of Rooms:</span>
+                        <br>
+
+
+
+                        <!-- Advanced Search 2nd --> 
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Pets Allowed</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01" name="pets_allowed">
+                                        <option selected></option>
+                                        <option value="1">Yes</option>
+                                        <option value="2">No</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <input type="text" aria-label="First name" class="form-control" placeholder="Min ">
-                                <input type="text" aria-label="Last name" class="form-control" placeholder="Max ">
-                            </div>
-                        </div>
-                      </div>
-                      <br>
-
-
-
-                    <!-- Advanced Search 2nd --> 
-                        <div class="row">
                             <div class="col">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <label class="input-group-text" for="inputGroupSelect01">Pets Allowed</label>
+                                    <label class="input-group-text" for="inputGroupSelect01">Furnished</label>
                                     </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                      <option selected></option>
-                                      <option value="1">Yes</option>
-                                      <option value="2">No</option>
+                                    <select class="custom-select" id="inputGroupSelect01" name="furnished">
+                                    <option selected></option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
                                     </select>
-                                  </div>
-                              </div>
-                          <div class="col">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <label class="input-group-text" for="inputGroupSelect01">Furnished</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                  <option selected></option>
-                                  <option value="1">Yes</option>
-                                  <option value="2">No</option>
-                                </select>
-                              </div>
-                          </div>
-                          <div class="col">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <label class="input-group-text" for="inputGroupSelect01">Rent Period</label>
-                                </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                  <option selected></option>
-                                  <option value="1">>1</option>
-                                  <option value="2">1-2</option>
-                                  <option value="3">2+</option>
-                                </select>
                             </div>
-                          </div>
-                        </div>
-                      
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Rent Period</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01" name="rent_period">
+                                    <option selected></option>
+                                    <option value=">1">>1</option>
+                                    <option value="1-2">1-2</option>
+                                    <option value="2+">2+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+                        
 
-
-                        <!-- Model Weights --> 
-                        <p class="card-text">Here is some text where we explain why we are asking to choose to select weights</p>
-                        <div class="row">
-                            <div class="col-sm-4">
-                              <div class="card">
-                                <div class="card-body">
-                                    <div id="slider">
-                                        <h5 class="card-title">Price</h5>
-                                        <input class="bar" type="range" id="rangeinput" value="50" onchange="rangevalue.value=value"/>
-                                            <span class="highlight"></span>
-                                        <br>Weight: 
-                                        <output id="rangevalue">50</output>
+                            <!-- Model Weights --> 
+                            <p class="card-text">Here is some text where we explain why we are asking to choose to select weights</p>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="slider">
+                                            <h5 class="card-title">Price</h5>
+                                            <input class="bar" type="range" name="price" id="rangeinput" value="50" onchange="rangevalue.value=value"/>
+                                                <span class="highlight"></span>
+                                            <br>Weight: 
+                                            <output id="rangevalue" name="price">50</output>
+                                        </div>
                                     </div>
                                 </div>
-                              </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="card">
+                                    <div class="card-body">
+                                        <div id="slider">
+                                            <h5 class="card-title">Location</h5>
+                                            <input class="bar" type="range" name="location" id="rangeinput1" value="50" onchange="rangevalue1.value=value"/>
+                                                <span class="highlight"></span>
+                                            <br>Weight: 
+                                            <output id="rangevalue1" name="location">50</output>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="card">
+                                    <div class="card-body">
+                                        <div id="slider">
+                                            <h5 class="card-title">Some other value</h5>
+                                            <input class="bar" type="range" name="other" id="rangeinput1" value="50" onchange="rangevalue2.value=value"/>
+                                                <span class="highlight"></span>
+                                            <br>Weight: 
+                                            <output id="rangevalue2" name="other">50</output>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="card">
-                                  <div class="card-body">
-                                      <div id="slider">
-                                          <h5 class="card-title">Location</h5>
-                                          <input class="bar" type="range" id="rangeinput1" value="50" onchange="rangevalue1.value=value"/>
-                                              <span class="highlight"></span>
-                                          <br>Weight: 
-                                          <output id="rangevalue1">50</output>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-sm-4">
-                                <div class="card">
-                                  <div class="card-body">
-                                      <div id="slider">
-                                          <h5 class="card-title">Some other value</h5>
-                                          <input class="bar" type="range" id="rangeinput1" value="50" onchange="rangevalue2.value=value"/>
-                                              <span class="highlight"></span>
-                                          <br>Weight: 
-                                          <output id="rangevalue2">50</output>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-                          </div>
-                        <br>
+                            <br>
 
-                        <input href="#" type="submit" value="Search" id="calc_btn" class="btn btn-primary" />
-                        <br />
-        
-                        
-                      </form>
-        
+                            <input href="#" type="submit" value="Search" id="calc_btn" class="btn btn-primary" />
+                            <br />
+            
+                            
+                        </form>
+            
+                        </div>
                     </div>
-                  </div>
+                </div>
+                <div class="col"></div>
             </div>
-            <div class="col"></div>
-        </div>
+        
      
-                
-                        <!-- Advanced Search --> 
+        <!-- Advanced Search --> 
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-8">      
                         <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Advanced Options
                           </button>
@@ -279,7 +298,9 @@
                           </div>
                         </div>
                         <br>
-  
+                </div>
+            <div class="col"></div>
+        </form>
     </div>
 
  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
