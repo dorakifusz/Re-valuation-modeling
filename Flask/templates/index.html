@@ -11,20 +11,22 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="index.html">REV Modelling</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Real Estate Valuation Modelling</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-                <a class="nav-link " href="searchPage.html">Find appartment <span class="sr-only">(current)</span></a>
-                <a class="nav-link" href="#">Agreements</a>
-                <a class="nav-link" href="#">Sign Up</a>
-                <a class="nav-link" href="#">Login</a>
-                <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
-            </div>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Search Form <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </div>
     </nav>
     
@@ -57,6 +59,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-2.4">
+                                
+                            </div>
                             <div class="col">
                                 <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -67,21 +72,32 @@
                                 <label class="form-control">Apartment</label>
                                 </div>
                             </div>
-                            <div class="col">
+                             
+                            <div class="col-2.4">
                                 <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                     <input type="checkbox" name="room">
                                     </div>
                                 </div>
-                                <label class="form-control">Room</label>
+                                <label class="form-control">Room    </label>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                    <input type="checkbox" name="villa">
+                                    <input type="checkbox" name="terraced">
+                                    </div>
+                                </div>
+                                <label class="form-control">Terraced</label>
+                                </div>
+                            </div>
+                            <div class="col-2.4">
+                                <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                    <input type="checkbox" name="room">
                                     </div>
                                 </div>
                                 <label class="form-control">Villa</label>
@@ -241,68 +257,7 @@
                     </div>
                 </div>
                 <div class="col"></div>
-            </div>
         
-     
-        <!-- Advanced Search --> 
-        <br>
-        <div class="container">
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-8">      
-                        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            Advanced Options
-                          </button>
-                        </p>
-                        <div class="collapse" id="collapseExample">
-                          <div class="card card-body">
-                              <div class="row">
-                                  <div class="col">
-                                      <div class="input-group mb-3">
-                                          <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupSelect01">Pets Allowed</label>
-                                          </div>
-                                          <select class="custom-select" id="inputGroupSelect01">
-                                            <option selected></option>
-                                            <option value="1">Yes</option>
-                                            <option value="2">No</option>
-                                          </select>
-                                        </div>
-                                    </div>
-                                <div class="col">
-                                  <div class="input-group mb-3">
-                                      <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Furnished</label>
-                                      </div>
-                                      <select class="custom-select" id="inputGroupSelect01">
-                                        <option selected></option>
-                                        <option value="1">Yes</option>
-                                        <option value="2">No</option>
-                                      </select>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                  <div class="input-group mb-3">
-                                      <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Rent Period</label>
-                                      </div>
-                                      <select class="custom-select" id="inputGroupSelect01">
-                                        <option selected></option>
-                                        <option value="1">>1</option>
-                                        <option value="2">1-2</option>
-                                        <option value="3">2+</option>
-                                      </select>
-                                  </div>
-                                </div>
-                              </div>
-                          </div>
-                        </div>
-                        <br>
-                </div>
-            <div class="col"></div>
-        </form>
-    </div>
-
  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
