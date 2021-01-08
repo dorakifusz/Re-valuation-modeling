@@ -16,6 +16,11 @@ df["links_image3_url"]=df["links_image3_url"][:][:-5]
 
 for i in range(30,48):
     df.iloc[:,i]=round(df.iloc[:,i],2)
+longi=[]
+lati =[]
+for i in range(0,):
+    longi+=[df.iloc[i,20]]
+    lati+=[df.iloc[i,19]]
 
 #Here I decrease the scope of data set and transform it into a dictionary
 cf=df.iloc[0:5,2:8]
@@ -30,7 +35,7 @@ def index():
 
 @app.route("/result", methods=["GET","POST"])
 def result():
-        global df, university_selection, apartment, pets_allowed, price, location
+        global df, university_selection, apartment, pets_allowed, price, location, longi, lati
         min_price=0
         max_price=0
         min_room=0
@@ -91,7 +96,7 @@ def result():
             TypeError
 
         
-        return render_template('result.html',university_selection=university_selection , df=df)
+        return render_template('result.html',university_selection=university_selection , df=df, lati=lati, logi=longi)
         
 
 @app.route("/result2", methods=["GET","POST"])

@@ -1,151 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
+<script>
+    function initMap() {
+        // map options
+        var options = {
+        zoom: 11,
+        center: {
+            lat: 55.6761,
+            lng: 12.5683
+        }
+        }
+        var map = new google.maps.Map(document.getElementById('map'), options);
+        // Add a marker clusterer to manage the markers.
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Search data</title>
-    <!-- add icon link -->
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
 
-<body>
-   
-    <!-- Navbar - Bootstrap -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="index.html">StudentHousing</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-                <a class="nav-link " href="#">Find appartment <span class="sr-only">(current)</span></a>
-                <a class="nav-link" href="#">Agreements</a>
-                <a class="nav-link" href="#">Sign Up</a>
-                <a class="nav-link" href="#">Login</a>
-                <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
-            </div>
-        </div>
-    </nav>
-    <!-- Jumbotron -->
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">One step closer to your future appartment...</h1>
-            <p class="lead">Optimize your results by filters...</p>
-        </div>
-    </div>
+        {%for i in range(0, 10)%}
 
-<!-- Houses page -->
-    <div class="container">
-        <div class="row search-field">
-            <!-- Search-->
-        <div class="col-3">
-            <div class="search-sidebar">
-                <h4>
-                    Search Settings
-                </h4>
+            //Add marker
+            var markers = [
+            //Dublin
+            {
+                coords: {
+                lat: {{df.iloc[i,19]}},
+                lng: {{df.iloc[i,20]}}
+                },
+                iconImage: 'assets/img/places/stparkdublin.png',
+                content: '<h5 class="card-title">{{df.iloc[i,1]}} m²</h5>'  + '<p>{{df.iloc[i,2]}}</p>' + '<p>Distance to {{university_selection}}: {{df.loc[i,university_selection]}} km</p>'+'<p>Takeover date: {{df.iloc[i,10]}}</p>'+'<p>Montly Price: {{df.iloc[i,18]}} dkk</p>'
+            },
 
-                <div class="filter-section">
-                    <h5 type="filter-section_name" id="Filter_Section_Rental_Type">
-                        Rental type
-                    </h5>
-
-                </div>
-            </div>
-        </div>
-        
-        <!-- Appartments -->
-        
-        <div class="col-9">
-            <div class="row">
-                <div class="card" style="width: 18rem;">
-                    <img src="/Images/Banner/nathan-fertig-FBXuXp57eM0-unsplash.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">4 værelses lejlighed på 155km2</h5>
-                        <p class="card-text">Some quick infor about the apartment, like size.</p>
-                        <a href="#" class="btn btn-secondary">Check it out </a>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="/Images/Banner/nathan-van-egmond-9LMRQdVv7hw-unsplash.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">4 værelses lejlighed på 155km2</h5>
-                        <p class="card-text">Some quick infor about the apartment, like size.</p>
-                        <a href="#" class="btn btn-secondary">Check it out </a>
-                        </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="/Images/Banner/patrick-perkins-3wylDrjxH-E-unsplash.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">4 værelses lejlighed på 155km2</h5>
-                    <p class="card-text">Some quick infor about the apartment, like size.</p>
-                    <a href="#" class="btn btn-secondary">Check it out </a>
-                    </div>
-                 </div>
-               
-                <div class="card" style="width: 18rem;">
-                    <img src="/Images/Banner/aaron-huber-oMOx_wV6mLQ-unsplash.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">4 værelses lejlighed på 155km2</h5>
-                        <p class="card-text">Some quick infor about the apartment, like size.</p>
-                        <a href="#" class="btn btn-secondary">Check it out </a>
-                        </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="/Images/Banner/nathan-fertig-FBXuXp57eM0-unsplash.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">4 værelses lejlighed på 155km2</h5>
-                        <p class="card-text">Some quick infor about the apartment, like size.</p>
-                        <a href="#" class="btn btn-secondary">Check it out </a>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="/Images/Banner/nathan-van-egmond-9LMRQdVv7hw-unsplash.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">4 værelses lejlighed på 155km2</h5>
-                        <p class="card-text">Some quick infor about the apartment, like size.</p>
-                        <a href="#" class="btn btn-secondary">Check it out </a>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="/Images/Banner/patrick-perkins-3wylDrjxH-E-unsplash.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">4 værelses lejlighed på 155km2</h5>
-                        <p class="card-text">Some quick infor about the apartment, like size.</p>
-                        <a href="#" class="btn btn-secondary">Check it out </a>
-                    </div>
-                </div>
-                
-                <div class="card" style="width: 18rem;">
-                    <img src="/Images/Banner/aaron-huber-oMOx_wV6mLQ-unsplash.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">4 værelses lejlighed på 155km2</h5>
-                        <p class="card-text">Some quick infor about the apartment, like size.</p>
-                        <a href="#" class="btn btn-secondary">Check it out </a>
-                    </div>
-                </div>
-               
+            ];
             
-            </div>
-        </div>
-        </div>
-    </div>
+        {%endfor%} 
+  
+        // Loop through markers
+        var gmarkers = [];
+        for (var i = 0; i < 10; i++) {
+            var markers = [
+            //Dublin
+            {
+                coords: {
+                lat: {{df.iloc[i,19]}},
+                lng: {{df.iloc[i,20]}}
+                },
+                iconImage: 'assets/img/places/stparkdublin.png',
+                content: '<h5 class="card-title">{{df.iloc[i,1]}} m²</h5>'  + '<p>{{df.iloc[i,2]}}</p>' + '<p>Distance to {{university_selection}}: {{df.loc[i,university_selection]}} km</p>'+'<p>Takeover date: {{df.iloc[i,10]}}</p>'+'<p>Montly Price: {{df.iloc[i,18]}} dkk</p>'
+            },
+
+            ];
+            gmarkers.push(addMarker(markers));
+        }
+
+        //Add MArker function
+        function addMarker(props) {
+        var marker = new google.maps.Marker({
+            position: props.coords,
+            map: map,
+
+        });
+
+        /* if(props.iconImage){
+            marker.setIcon(props.iconImage);
+        } */
+
+        //Check content
+        if (props.content) {
+            var infoWindow = new google.maps.InfoWindow({
+            content: props.content
+            });
+            marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+            });
+        }
+        return marker;
+        }
+        var markerCluster = new MarkerClusterer(map, gmarkers, {
+        imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initMap)
+    </script>
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-    <script src="boligProject.js"></script>
-</body>
 
-</html>
+    google.maps.event.addDomListener(window, 'load', initMap)
+            
+
+
+
+            addMarker({lat:11.5564, lng:104.9282});
+            addMarker({lat:11.2237, lng:105.1259});
+
+            function addMarker(coords){
+                var marker = new google.maps.Marker({
+                    position:coords,
+                    map:map,
+                });
+            }
+        }

@@ -9,8 +9,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5S7VNA9y0YFfshi3_tVzc2Ib4CnBA6-M&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */  
+        padding: 2%;
+      }
+    </style>
+
   </head>
-  <body>
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Real Estate Valuation Modelling</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,10 +42,858 @@
             </form>
         </div>
     </nav>
-<br>
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <div id="map"></div>
+    <script>
+    function initMap() {
+        // map options
+        var options = {
+        zoom: 12,
+        center: {
+            lat: {{df.iloc[0,19]}},
+            lng: {{df.iloc[0,20]}}
+        }
+        }
+        var map = new google.maps.Map(document.getElementById('map'), options);
+        // Add a marker clusterer to manage the markers.
+        
+        
+        
 
 
-{%for i in range(0, 10)%} 
+        //Add marker
+        var markers = [
+
+        //Dublin
+        {
+            coords: {
+            lat: {{df.iloc[0,19]}},
+            lng: {{df.iloc[0,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[0,1]}} m²</h6>'  + '<p>{{df.iloc[0,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[0,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[0,18]}} dkk</p>' + '<a href={{df.iloc[0,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[1,19]}},
+            lng: {{df.iloc[1,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[1,1]}} m²</h6>'  + '<p>{{df.iloc[1,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[1,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[1,18]}} dkk</p>' + '<a href={{df.iloc[1,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[2,19]}},
+            lng: {{df.iloc[2,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[2,1]}} m²</h6>'  + '<p>{{df.iloc[2,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[2,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[2,18]}} dkk</p>' + '<a href={{df.iloc[2,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[3,19]}},
+            lng: {{df.iloc[3,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[3,1]}} m²</h6>'  + '<p>{{df.iloc[3,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[3,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[3,18]}} dkk</p>' + '<a href={{df.iloc[3,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[4,19]}},
+            lng: {{df.iloc[4,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[4,1]}} m²</h6>'  + '<p>{{df.iloc[4,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[4,university_selection]}} km</p>' +'<p>Montly Price: {{df.iloc[4,18]}} dkk</p>' + '<a href={{df.iloc[4,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[5,19]}},
+            lng: {{df.iloc[5,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[5,1]}} m²</h6>'  + '<p>{{df.iloc[5,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[5,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[5,18]}} dkk</p>' + '<a href={{df.iloc[5,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[6,19]}},
+            lng: {{df.iloc[6,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[6,1]}} m²</h6>'  + '<p>{{df.iloc[6,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[6,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[6,18]}} dkk</p>' + '<a href={{df.iloc[6,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[7,19]}},
+            lng: {{df.iloc[7,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[7,1]}} m²</h6>'  + '<p>{{df.iloc[7,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[7,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[7,18]}} dkk</p>' + '<a href={{df.iloc[7,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[8,19]}},
+            lng: {{df.iloc[8,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[8,1]}} m²</h6>'  + '<p>{{df.iloc[8,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[8,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[8,18]}} dkk</p>' + '<a href={{df.iloc[8,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[9,19]}},
+            lng: {{df.iloc[9,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[9,1]}} m²</h6>'  + '<p>{{df.iloc[9,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[9,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[9,18]}} dkk</p>' + '<a href={{df.iloc[9,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[10,19]}},
+            lng: {{df.iloc[10,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[10,1]}} m²</h6>'  + '<p>{{df.iloc[10,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[10,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[10,18]}} dkk</p>' + '<a href={{df.iloc[10,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[11,19]}},
+            lng: {{df.iloc[11,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[11,1]}} m²</h6>'  + '<p>{{df.iloc[11,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[11,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[11,18]}} dkk</p>' + '<a href={{df.iloc[11,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[12,19]}},
+            lng: {{df.iloc[12,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[12,1]}} m²</h6>'  + '<p>{{df.iloc[12,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[12,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[12,18]}} dkk</p>' + '<a href={{df.iloc[12,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[13,19]}},
+            lng: {{df.iloc[13,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[13,1]}} m²</h6>'  + '<p>{{df.iloc[13,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[13,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[13,18]}} dkk</p>' + '<a href={{df.iloc[13,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[14,19]}},
+            lng: {{df.iloc[14,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[14,1]}} m²</h6>'  + '<p>{{df.iloc[14,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[14,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[14,18]}} dkk</p>' + '<a href={{df.iloc[14,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[15,19]}},
+            lng: {{df.iloc[15,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[15,1]}} m²</h6>'  + '<p>{{df.iloc[15,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[15,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[15,18]}} dkk</p>' + '<a href={{df.iloc[15,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[16,19]}},
+            lng: {{df.iloc[16,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[16,1]}} m²</h6>'  + '<p>{{df.iloc[16,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[16,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[16,18]}} dkk</p>' + '<a href={{df.iloc[16,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[17,19]}},
+            lng: {{df.iloc[17,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[17,1]}} m²</h6>'  + '<p>{{df.iloc[17,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[17,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[17,18]}} dkk</p>' + '<a href={{df.iloc[17,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[18,19]}},
+            lng: {{df.iloc[18,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[18,1]}} m²</h6>'  + '<p>{{df.iloc[18,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[18,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[18,18]}} dkk</p>' + '<a href={{df.iloc[18,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[19,19]}},
+            lng: {{df.iloc[19,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[19,1]}} m²</h6>'  + '<p>{{df.iloc[19,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[19,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[19,18]}} dkk</p>' + '<a href={{df.iloc[19,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[20,19]}},
+            lng: {{df.iloc[20,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[20,1]}} m²</h6>'  + '<p>{{df.iloc[20,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[20,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[20,18]}} dkk</p>' + '<a href={{df.iloc[20,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[21,19]}},
+            lng: {{df.iloc[21,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[21,1]}} m²</h6>'  + '<p>{{df.iloc[21,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[21,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[21,18]}} dkk</p>' + '<a href={{df.iloc[21,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[22,19]}},
+            lng: {{df.iloc[22,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[22,1]}} m²</h6>'  + '<p>{{df.iloc[22,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[22,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[22,18]}} dkk</p>' + '<a href={{df.iloc[22,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[23,19]}},
+            lng: {{df.iloc[23,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[23,1]}} m²</h6>'  + '<p>{{df.iloc[23,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[23,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[23,18]}} dkk</p>' + '<a href={{df.iloc[23,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[24,19]}},
+            lng: {{df.iloc[24,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[24,1]}} m²</h6>'  + '<p>{{df.iloc[24,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[24,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[24,18]}} dkk</p>' + '<a href={{df.iloc[24,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[25,19]}},
+            lng: {{df.iloc[25,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[25,1]}} m²</h6>'  + '<p>{{df.iloc[25,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[25,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[25,18]}} dkk</p>' + '<a href={{df.iloc[25,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[26,19]}},
+            lng: {{df.iloc[26,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[26,1]}} m²</h6>'  + '<p>{{df.iloc[26,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[26,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[26,18]}} dkk</p>' + '<a href={{df.iloc[26,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[27,19]}},
+            lng: {{df.iloc[27,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[27,1]}} m²</h6>'  + '<p>{{df.iloc[27,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[27,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[27,18]}} dkk</p>' + '<a href={{df.iloc[27,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[28,19]}},
+            lng: {{df.iloc[28,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[28,1]}} m²</h6>'  + '<p>{{df.iloc[28,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[28,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[28,18]}} dkk</p>' + '<a href={{df.iloc[28,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[29,19]}},
+            lng: {{df.iloc[29,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[29,1]}} m²</h6>'  + '<p>{{df.iloc[29,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[29,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[29,18]}} dkk</p>' + '<a href={{df.iloc[29,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[30,19]}},
+            lng: {{df.iloc[30,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[30,1]}} m²</h6>'  + '<p>{{df.iloc[30,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[30,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[30,18]}} dkk</p>' + '<a href={{df.iloc[30,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[31,19]}},
+            lng: {{df.iloc[31,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[31,1]}} m²</h6>'  + '<p>{{df.iloc[31,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[31,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[31,18]}} dkk</p>' + '<a href={{df.iloc[31,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[32,19]}},
+            lng: {{df.iloc[32,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[32,1]}} m²</h6>'  + '<p>{{df.iloc[32,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[32,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[32,18]}} dkk</p>' + '<a href={{df.iloc[32,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[33,19]}},
+            lng: {{df.iloc[33,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[33,1]}} m²</h6>'  + '<p>{{df.iloc[33,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[33,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[33,18]}} dkk</p>' + '<a href={{df.iloc[33,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[34,19]}},
+            lng: {{df.iloc[34,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[34,1]}} m²</h6>'  + '<p>{{df.iloc[34,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[34,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[34,18]}} dkk</p>' + '<a href={{df.iloc[34,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[35,19]}},
+            lng: {{df.iloc[35,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[35,1]}} m²</h6>'  + '<p>{{df.iloc[35,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[35,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[35,18]}} dkk</p>' + '<a href={{df.iloc[35,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[36,19]}},
+            lng: {{df.iloc[36,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[36,1]}} m²</h6>'  + '<p>{{df.iloc[36,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[36,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[36,18]}} dkk</p>' + '<a href={{df.iloc[36,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[37,19]}},
+            lng: {{df.iloc[37,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[37,1]}} m²</h6>'  + '<p>{{df.iloc[37,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[37,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[37,18]}} dkk</p>' + '<a href={{df.iloc[37,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[38,19]}},
+            lng: {{df.iloc[38,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[38,1]}} m²</h6>'  + '<p>{{df.iloc[38,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[38,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[38,18]}} dkk</p>' + '<a href={{df.iloc[38,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[39,19]}},
+            lng: {{df.iloc[39,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[39,1]}} m²</h6>'  + '<p>{{df.iloc[39,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[39,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[39,18]}} dkk</p>' + '<a href={{df.iloc[39,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[40,19]}},
+            lng: {{df.iloc[40,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[40,1]}} m²</h6>'  + '<p>{{df.iloc[40,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[40,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[40,18]}} dkk</p>' + '<a href={{df.iloc[40,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[41,19]}},
+            lng: {{df.iloc[41,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[41,1]}} m²</h6>'  + '<p>{{df.iloc[41,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[41,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[41,18]}} dkk</p>' + '<a href={{df.iloc[41,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[42,19]}},
+            lng: {{df.iloc[42,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[42,1]}} m²</h6>'  + '<p>{{df.iloc[42,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[42,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[42,18]}} dkk</p>' + '<a href={{df.iloc[42,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[43,19]}},
+            lng: {{df.iloc[43,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[43,1]}} m²</h6>'  + '<p>{{df.iloc[43,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[43,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[43,18]}} dkk</p>' + '<a href={{df.iloc[43,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[44,19]}},
+            lng: {{df.iloc[44,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[44,1]}} m²</h6>'  + '<p>{{df.iloc[44,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[44,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[44,18]}} dkk</p>' + '<a href={{df.iloc[44,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[45,19]}},
+            lng: {{df.iloc[45,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[45,1]}} m²</h6>'  + '<p>{{df.iloc[45,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[45,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[45,18]}} dkk</p>' + '<a href={{df.iloc[45,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[46,19]}},
+            lng: {{df.iloc[46,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[46,1]}} m²</h6>'  + '<p>{{df.iloc[46,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[46,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[46,18]}} dkk</p>' + '<a href={{df.iloc[46,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[47,19]}},
+            lng: {{df.iloc[47,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[47,1]}} m²</h6>'  + '<p>{{df.iloc[47,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[47,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[47,18]}} dkk</p>' + '<a href={{df.iloc[47,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[48,19]}},
+            lng: {{df.iloc[48,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[48,1]}} m²</h6>'  + '<p>{{df.iloc[48,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[48,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[48,18]}} dkk</p>' + '<a href={{df.iloc[48,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[49,19]}},
+            lng: {{df.iloc[49,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[49,1]}} m²</h6>'  + '<p>{{df.iloc[49,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[49,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[49,18]}} dkk</p>' + '<a href={{df.iloc[49,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[50,19]}},
+            lng: {{df.iloc[50,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[50,1]}} m²</h6>'  + '<p>{{df.iloc[50,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[50,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[50,18]}} dkk</p>' + '<a href={{df.iloc[50,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[51,19]}},
+            lng: {{df.iloc[51,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[51,1]}} m²</h6>'  + '<p>{{df.iloc[51,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[51,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[51,18]}} dkk</p>' + '<a href={{df.iloc[51,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[52,19]}},
+            lng: {{df.iloc[52,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[52,1]}} m²</h6>'  + '<p>{{df.iloc[52,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[52,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[52,18]}} dkk</p>' + '<a href={{df.iloc[52,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[53,19]}},
+            lng: {{df.iloc[53,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[53,1]}} m²</h6>'  + '<p>{{df.iloc[53,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[53,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[53,18]}} dkk</p>' + '<a href={{df.iloc[53,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[54,19]}},
+            lng: {{df.iloc[54,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[54,1]}} m²</h6>'  + '<p>{{df.iloc[54,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[54,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[54,18]}} dkk</p>' + '<a href={{df.iloc[54,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[55,19]}},
+            lng: {{df.iloc[55,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[55,1]}} m²</h6>'  + '<p>{{df.iloc[55,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[55,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[55,18]}} dkk</p>' + '<a href={{df.iloc[55,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[56,19]}},
+            lng: {{df.iloc[56,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[56,1]}} m²</h6>'  + '<p>{{df.iloc[56,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[56,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[56,18]}} dkk</p>' + '<a href={{df.iloc[56,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[57,19]}},
+            lng: {{df.iloc[57,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[57,1]}} m²</h6>'  + '<p>{{df.iloc[57,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[57,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[57,18]}} dkk</p>' + '<a href={{df.iloc[57,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[58,19]}},
+            lng: {{df.iloc[58,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[58,1]}} m²</h6>'  + '<p>{{df.iloc[58,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[58,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[58,18]}} dkk</p>' + '<a href={{df.iloc[58,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[59,19]}},
+            lng: {{df.iloc[59,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[59,1]}} m²</h6>'  + '<p>{{df.iloc[59,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[59,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[59,18]}} dkk</p>' + '<a href={{df.iloc[59,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[60,19]}},
+            lng: {{df.iloc[60,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[60,1]}} m²</h6>'  + '<p>{{df.iloc[60,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[60,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[60,18]}} dkk</p>' + '<a href={{df.iloc[60,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[61,19]}},
+            lng: {{df.iloc[61,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[61,1]}} m²</h6>'  + '<p>{{df.iloc[61,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[61,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[61,18]}} dkk</p>' + '<a href={{df.iloc[61,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[62,19]}},
+            lng: {{df.iloc[62,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[62,1]}} m²</h6>'  + '<p>{{df.iloc[62,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[62,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[62,18]}} dkk</p>' + '<a href={{df.iloc[62,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[63,19]}},
+            lng: {{df.iloc[63,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[63,1]}} m²</h6>'  + '<p>{{df.iloc[63,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[63,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[63,18]}} dkk</p>' + '<a href={{df.iloc[63,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[64,19]}},
+            lng: {{df.iloc[64,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[64,1]}} m²</h6>'  + '<p>{{df.iloc[64,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[64,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[64,18]}} dkk</p>' + '<a href={{df.iloc[64,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[65,19]}},
+            lng: {{df.iloc[65,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[65,1]}} m²</h6>'  + '<p>{{df.iloc[65,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[65,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[65,18]}} dkk</p>' + '<a href={{df.iloc[65,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[66,19]}},
+            lng: {{df.iloc[66,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[66,1]}} m²</h6>'  + '<p>{{df.iloc[66,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[66,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[66,18]}} dkk</p>' + '<a href={{df.iloc[66,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[67,19]}},
+            lng: {{df.iloc[67,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[67,1]}} m²</h6>'  + '<p>{{df.iloc[67,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[67,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[67,18]}} dkk</p>' + '<a href={{df.iloc[67,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[68,19]}},
+            lng: {{df.iloc[68,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[68,1]}} m²</h6>'  + '<p>{{df.iloc[68,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[68,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[68,18]}} dkk</p>' + '<a href={{df.iloc[68,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[69,19]}},
+            lng: {{df.iloc[69,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[69,1]}} m²</h6>'  + '<p>{{df.iloc[69,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[69,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[69,18]}} dkk</p>' + '<a href={{df.iloc[69,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[70,19]}},
+            lng: {{df.iloc[70,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[70,1]}} m²</h6>'  + '<p>{{df.iloc[70,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[70,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[70,18]}} dkk</p>' + '<a href={{df.iloc[70,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[71,19]}},
+            lng: {{df.iloc[71,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[71,1]}} m²</h6>'  + '<p>{{df.iloc[71,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[71,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[71,18]}} dkk</p>' + '<a href={{df.iloc[71,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[72,19]}},
+            lng: {{df.iloc[72,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[72,1]}} m²</h6>'  + '<p>{{df.iloc[72,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[72,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[72,18]}} dkk</p>' + '<a href={{df.iloc[72,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[73,19]}},
+            lng: {{df.iloc[73,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[73,1]}} m²</h6>'  + '<p>{{df.iloc[73,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[73,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[73,18]}} dkk</p>' + '<a href={{df.iloc[73,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[74,19]}},
+            lng: {{df.iloc[74,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[74,1]}} m²</h6>'  + '<p>{{df.iloc[74,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[74,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[74,18]}} dkk</p>' + '<a href={{df.iloc[74,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[75,19]}},
+            lng: {{df.iloc[75,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[75,1]}} m²</h6>'  + '<p>{{df.iloc[75,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[75,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[75,18]}} dkk</p>' + '<a href={{df.iloc[75,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[76,19]}},
+            lng: {{df.iloc[76,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[76,1]}} m²</h6>'  + '<p>{{df.iloc[76,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[76,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[76,18]}} dkk</p>' + '<a href={{df.iloc[76,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[77,19]}},
+            lng: {{df.iloc[77,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[77,1]}} m²</h6>'  + '<p>{{df.iloc[77,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[77,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[77,18]}} dkk</p>' + '<a href={{df.iloc[77,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[78,19]}},
+            lng: {{df.iloc[78,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[78,1]}} m²</h6>'  + '<p>{{df.iloc[78,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[78,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[78,18]}} dkk</p>' + '<a href={{df.iloc[78,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[79,19]}},
+            lng: {{df.iloc[79,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[79,1]}} m²</h6>'  + '<p>{{df.iloc[79,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[79,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[79,18]}} dkk</p>' + '<a href={{df.iloc[79,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[80,19]}},
+            lng: {{df.iloc[80,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[80,1]}} m²</h6>'  + '<p>{{df.iloc[80,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[80,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[80,18]}} dkk</p>' + '<a href={{df.iloc[80,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[81,19]}},
+            lng: {{df.iloc[81,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[81,1]}} m²</h6>'  + '<p>{{df.iloc[81,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[81,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[81,18]}} dkk</p>' + '<a href={{df.iloc[81,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[82,19]}},
+            lng: {{df.iloc[82,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[82,1]}} m²</h6>'  + '<p>{{df.iloc[82,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[82,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[82,18]}} dkk</p>' + '<a href={{df.iloc[82,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[83,19]}},
+            lng: {{df.iloc[83,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[83,1]}} m²</h6>'  + '<p>{{df.iloc[83,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[83,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[83,18]}} dkk</p>' + '<a href={{df.iloc[83,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[84,19]}},
+            lng: {{df.iloc[84,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[84,1]}} m²</h6>'  + '<p>{{df.iloc[84,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[84,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[84,18]}} dkk</p>' + '<a href={{df.iloc[84,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[85,19]}},
+            lng: {{df.iloc[85,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[85,1]}} m²</h6>'  + '<p>{{df.iloc[85,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[85,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[85,18]}} dkk</p>' + '<a href={{df.iloc[85,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[86,19]}},
+            lng: {{df.iloc[86,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[86,1]}} m²</h6>'  + '<p>{{df.iloc[86,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[86,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[86,18]}} dkk</p>' + '<a href={{df.iloc[86,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[87,19]}},
+            lng: {{df.iloc[87,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[87,1]}} m²</h6>'  + '<p>{{df.iloc[87,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[87,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[87,18]}} dkk</p>' + '<a href={{df.iloc[87,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[88,19]}},
+            lng: {{df.iloc[88,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[88,1]}} m²</h6>'  + '<p>{{df.iloc[88,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[88,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[88,18]}} dkk</p>' + '<a href={{df.iloc[88,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[89,19]}},
+            lng: {{df.iloc[89,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[89,1]}} m²</h6>'  + '<p>{{df.iloc[89,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[89,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[89,18]}} dkk</p>' + '<a href={{df.iloc[89,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[90,19]}},
+            lng: {{df.iloc[90,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[90,1]}} m²</h6>'  + '<p>{{df.iloc[90,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[90,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[90,18]}} dkk</p>' + '<a href={{df.iloc[90,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[91,19]}},
+            lng: {{df.iloc[91,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[91,1]}} m²</h6>'  + '<p>{{df.iloc[91,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[91,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[91,18]}} dkk</p>' + '<a href={{df.iloc[91,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[92,19]}},
+            lng: {{df.iloc[92,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[92,1]}} m²</h6>'  + '<p>{{df.iloc[92,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[92,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[92,18]}} dkk</p>' + '<a href={{df.iloc[92,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[93,19]}},
+            lng: {{df.iloc[93,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[93,1]}} m²</h6>'  + '<p>{{df.iloc[93,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[93,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[93,18]}} dkk</p>' + '<a href={{df.iloc[93,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[94,19]}},
+            lng: {{df.iloc[94,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[94,1]}} m²</h6>'  + '<p>{{df.iloc[94,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[94,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[94,18]}} dkk</p>' + '<a href={{df.iloc[94,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[95,19]}},
+            lng: {{df.iloc[95,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[95,1]}} m²</h6>'  + '<p>{{df.iloc[95,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[95,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[95,18]}} dkk</p>' + '<a href={{df.iloc[95,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[96,19]}},
+            lng: {{df.iloc[96,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[96,1]}} m²</h6>'  + '<p>{{df.iloc[96,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[96,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[96,18]}} dkk</p>' + '<a href={{df.iloc[96,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[97,19]}},
+            lng: {{df.iloc[97,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[97,1]}} m²</h6>'  + '<p>{{df.iloc[97,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[97,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[97,18]}} dkk</p>' + '<a href={{df.iloc[97,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[98,19]}},
+            lng: {{df.iloc[98,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[98,1]}} m²</h6>'  + '<p>{{df.iloc[98,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[98,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[98,18]}} dkk</p>' + '<a href={{df.iloc[98,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[99,19]}},
+            lng: {{df.iloc[99,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[99,1]}} m²</h6>'  + '<p>{{df.iloc[99,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[99,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[99,18]}} dkk</p>' + '<a href={{df.iloc[99,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[100,19]}},
+            lng: {{df.iloc[100,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[100,1]}} m²</h6>'  + '<p>{{df.iloc[100,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[100,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[100,18]}} dkk</p>' + '<a href={{df.iloc[100,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[101,19]}},
+            lng: {{df.iloc[101,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[101,1]}} m²</h6>'  + '<p>{{df.iloc[101,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[101,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[101,18]}} dkk</p>' + '<a href={{df.iloc[101,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[102,19]}},
+            lng: {{df.iloc[102,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[102,1]}} m²</h6>'  + '<p>{{df.iloc[102,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[102,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[102,18]}} dkk</p>' + '<a href={{df.iloc[102,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[103,19]}},
+            lng: {{df.iloc[103,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[103,1]}} m²</h6>'  + '<p>{{df.iloc[103,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[103,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[103,18]}} dkk</p>' + '<a href={{df.iloc[103,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[104,19]}},
+            lng: {{df.iloc[104,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[104,1]}} m²</h6>'  + '<p>{{df.iloc[104,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[104,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[104,18]}} dkk</p>' + '<a href={{df.iloc[104,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[105,19]}},
+            lng: {{df.iloc[105,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[105,1]}} m²</h6>'  + '<p>{{df.iloc[105,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[105,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[105,18]}} dkk</p>' + '<a href={{df.iloc[105,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[106,19]}},
+            lng: {{df.iloc[106,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[106,1]}} m²</h6>'  + '<p>{{df.iloc[106,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[106,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[106,18]}} dkk</p>' + '<a href={{df.iloc[106,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[107,19]}},
+            lng: {{df.iloc[107,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[107,1]}} m²</h6>'  + '<p>{{df.iloc[107,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[107,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[107,18]}} dkk</p>' + '<a href={{df.iloc[107,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[108,19]}},
+            lng: {{df.iloc[108,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[108,1]}} m²</h6>'  + '<p>{{df.iloc[108,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[108,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[108,18]}} dkk</p>' + '<a href={{df.iloc[108,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[109,19]}},
+            lng: {{df.iloc[109,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[109,1]}} m²</h6>'  + '<p>{{df.iloc[109,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[109,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[109,18]}} dkk</p>' + '<a href={{df.iloc[109,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[110,19]}},
+            lng: {{df.iloc[110,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[110,1]}} m²</h6>'  + '<p>{{df.iloc[110,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[110,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[110,18]}} dkk</p>' + '<a href={{df.iloc[110,0]}}>Check out the apartment</a>'
+        },
+        {
+            coords: {
+            lat: {{df.iloc[111,19]}},
+            lng: {{df.iloc[111,20]}}
+            },
+            content: '<h6 class="card-title">{{df.iloc[111,1]}} m²</h6>'  + '<p>{{df.iloc[111,2]}}</p>'  + '<p>Distance to {{university_selection}}: {{df.loc[111,university_selection]}} km</p>' + '<p>Montly Price: {{df.iloc[111,18]}} dkk</p>' + '<a href={{df.iloc[111,0]}}>Check out the apartment</a>'
+        },
+        ];
+
+        // Loop through markers
+        var gmarkers = [];
+        for (var i = 0; i < markers.length; i++) {
+        gmarkers.push(addMarker(markers[i]));
+
+        }
+
+        //Add MArker function
+        function addMarker(props) {
+        var marker = new google.maps.Marker({
+            position: props.coords,
+            map: map,
+        });
+
+        /* if(props.iconImage){
+            marker.setIcon(props.iconImage);
+        } */
+
+        //Check content
+        if (props.content) {
+            var infoWindow = new google.maps.InfoWindow({
+            content: props.content
+            });
+            marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+            });
+        }
+        return marker;
+        }
+        var markerCluster = new MarkerClusterer(map, gmarkers, {
+        imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initMap)
+    </script>
+    <br>
+
+
+
+    
+    {%for i in range(0, 10)%}
         <div class="row">
             <div class="col"></div>
             <div class="col-11">
@@ -206,44 +1069,44 @@
 
         
 
-{%endfor%} 
+    {%endfor%} 
 
 
 
 
-<div class="container text-center">
-    <div class="row">
-    <div class="col-sm">
+    <div class="container text-center">
+        <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm" >
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="result">1</a></li>
+                <li class="page-item"><a class="page-link" href="result2">2</a></li>
+                <li class="page-item"><a class="page-link" href="result3">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+        </div>
     </div>
-    <div class="col-sm">
-    </div>
-    <div class="col-sm" >
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="result">1</a></li>
-            <li class="page-item"><a class="page-link" href="result2">2</a></li>
-            <li class="page-item"><a class="page-link" href="result3">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-                </a>
-            </li>
-            </ul>
-        </nav>
-    </div>
-    <div class="col-sm">
-    </div>
-    <div class="col-sm">
-    </div>
-    </div>
-</div>
 
 
     <!-- Optional JavaScript -->
@@ -251,5 +1114,5 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
